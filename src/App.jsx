@@ -6,6 +6,35 @@ const GOOGLE_SCRIPT_URL =
 const legalDisclaimer =
   "Fundr is not a financial adviser, broker, investment manager, crowdfunding platform, or securities exchange. We do not handle investor funds, recommend investments, sell securities, or guarantee outcomes. We facilitate visibility, structured profiles, feedback, and introductions only.";
 
+function SmartSelect({ name, label, children, required = true }) {
+  const [value, setValue] = useState("");
+  const [otherValue, setOtherValue] = useState("");
+
+  const finalValue = value === "Other" ? otherValue : value;
+
+  return (
+    <label>
+      <span>{label}</span>
+
+      <select value={value} onChange={(event) => setValue(event.target.value)} required={required}>
+        {children}
+      </select>
+
+      {value === "Other" && (
+        <input
+          className="other-input"
+          value={otherValue}
+          onChange={(event) => setOtherValue(event.target.value)}
+          placeholder={`Type other ${label.toLowerCase()}`}
+          required
+        />
+      )}
+
+      <input type="hidden" name={name} value={finalValue} />
+    </label>
+  );
+}
+
 function App() {
   const year = useMemo(() => new Date().getFullYear(), []);
   const [activeForm, setActiveForm] = useState("startup");
@@ -95,7 +124,9 @@ function App() {
             <a href="mailto:hello@fundr.com">hello@fundr.com</a>
           </div>
 
-          <a className="outline-button" href="#join">Join the pilot</a>
+          <a className="outline-button" href="#join">
+            Join the pilot
+          </a>
         </div>
       </section>
 
@@ -200,7 +231,8 @@ function StartupPilotForm() {
     event.preventDefault();
     setStatus("Submitting...");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     formData.append("type", "pilot_startup");
 
     try {
@@ -210,7 +242,7 @@ function StartupPilotForm() {
         body: new URLSearchParams(formData)
       });
 
-      event.currentTarget.reset();
+      form.reset();
       setStatus("Received. Thank you — we will review your pilot response.");
     } catch {
       setStatus("Something went wrong. Please try again or email hello@fundr.com.");
@@ -242,92 +274,82 @@ function StartupPilotForm() {
             <input name="companyName" required />
           </label>
 
-          <label>
-            <span>Location</span>
-            <select name="location" required>
-              <option value="">Select</option>
-              <option>Dubai</option>
-              <option>Abu Dhabi</option>
-              <option>Sharjah</option>
-              <option>Other UAE emirate</option>
-              <option>GCC</option>
-              <option>Outside UAE</option>
-            </select>
-          </label>
+          <SmartSelect name="location" label="Location">
+            <option value="">Select</option>
+            <option>Dubai</option>
+            <option>Abu Dhabi</option>
+            <option>Sharjah</option>
+            <option>Ajman</option>
+            <option>Ras Al Khaimah</option>
+            <option>Fujairah</option>
+            <option>Umm Al Quwain</option>
+            <option>GCC</option>
+            <option>Outside UAE</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Industry</span>
-            <select name="industry" required>
-              <option value="">Select</option>
-              <option>Technology</option>
-              <option>AI</option>
-              <option>Fintech</option>
-              <option>Automotive</option>
-              <option>F&amp;B</option>
-              <option>Health &amp; wellness</option>
-              <option>Education</option>
-              <option>Real estate</option>
-              <option>Marketplace</option>
-              <option>Consumer brands</option>
-              <option>Other</option>
-            </select>
-          </label>
+          <SmartSelect name="industry" label="Industry">
+            <option value="">Select</option>
+            <option>Technology</option>
+            <option>AI</option>
+            <option>Fintech</option>
+            <option>Automotive</option>
+            <option>F&amp;B</option>
+            <option>Health &amp; wellness</option>
+            <option>Education</option>
+            <option>Real estate</option>
+            <option>Marketplace</option>
+            <option>Consumer brands</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Stage</span>
-            <select name="stage" required>
-              <option value="">Select</option>
-              <option>Idea</option>
-              <option>MVP</option>
-              <option>Pre-seed</option>
-              <option>Seed</option>
-              <option>Early revenue</option>
-              <option>Growth</option>
-            </select>
-          </label>
+          <SmartSelect name="stage" label="Stage">
+            <option value="">Select</option>
+            <option>Idea</option>
+            <option>MVP</option>
+            <option>Pre-seed</option>
+            <option>Seed</option>
+            <option>Early revenue</option>
+            <option>Growth</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Monthly revenue range</span>
-            <select name="monthlyRevenue" required>
-              <option value="">Select</option>
-              <option>No revenue yet</option>
-              <option>AED 1k–10k</option>
-              <option>AED 10k–50k</option>
-              <option>AED 50k–100k</option>
-              <option>AED 100k–500k</option>
-              <option>AED 500k+</option>
-              <option>Prefer not to say</option>
-            </select>
-          </label>
+          <SmartSelect name="monthlyRevenue" label="Monthly revenue range">
+            <option value="">Select</option>
+            <option>No revenue yet</option>
+            <option>AED 1k–10k</option>
+            <option>AED 10k–50k</option>
+            <option>AED 50k–100k</option>
+            <option>AED 100k–500k</option>
+            <option>AED 500k+</option>
+            <option>Prefer not to say</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Capital need</span>
-            <select name="capitalNeed" required>
-              <option value="">Select</option>
-              <option>Under AED 100k</option>
-              <option>AED 100k–250k</option>
-              <option>AED 250k–500k</option>
-              <option>AED 500k–1M</option>
-              <option>AED 1M–3M</option>
-              <option>AED 3M+</option>
-              <option>Not sure yet</option>
-            </select>
-          </label>
+          <SmartSelect name="capitalNeed" label="Capital need">
+            <option value="">Select</option>
+            <option>Under AED 100k</option>
+            <option>AED 100k–250k</option>
+            <option>AED 250k–500k</option>
+            <option>AED 500k–1M</option>
+            <option>AED 1M–3M</option>
+            <option>AED 3M+</option>
+            <option>Not sure yet</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Transaction structure</span>
-            <select name="transactionStructure" required>
-              <option value="">Select</option>
-              <option>Equity</option>
-              <option>Debt</option>
-              <option>Convertible note</option>
-              <option>SAFE-style agreement</option>
-              <option>Revenue share</option>
-              <option>Strategic partnership</option>
-              <option>Advisory support</option>
-              <option>Not sure yet</option>
-            </select>
-          </label>
+          <SmartSelect name="transactionStructure" label="Transaction structure">
+            <option value="">Select</option>
+            <option>Equity</option>
+            <option>Debt</option>
+            <option>Convertible note</option>
+            <option>SAFE-style agreement</option>
+            <option>Revenue share</option>
+            <option>Strategic partnership</option>
+            <option>Advisory support</option>
+            <option>Not sure yet</option>
+            <option>Other</option>
+          </SmartSelect>
 
           <label>
             <span>Pitch deck / website link</span>
@@ -372,7 +394,8 @@ function InvestorPilotForm() {
     event.preventDefault();
     setStatus("Submitting...");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     formData.append("type", "pilot_investor");
 
     try {
@@ -382,7 +405,7 @@ function InvestorPilotForm() {
         body: new URLSearchParams(formData)
       });
 
-      event.currentTarget.reset();
+      form.reset();
       setStatus("Received. Thank you — we will review your pilot response.");
     } catch {
       setStatus("Something went wrong. Please try again or email hello@fundr.com.");
@@ -409,47 +432,43 @@ function InvestorPilotForm() {
             <input name="email" type="email" required />
           </label>
 
-          <label>
-            <span>Investor / operator type</span>
-            <select name="investorType" required>
-              <option value="">Select</option>
-              <option>Angel investor</option>
-              <option>Family office</option>
-              <option>Operator</option>
-              <option>Business owner</option>
-              <option>Strategic investor</option>
-              <option>Advisor / mentor</option>
-              <option>VC / investment firm</option>
-              <option>Other</option>
-            </select>
-          </label>
+          <SmartSelect name="investorType" label="Investor / operator type">
+            <option value="">Select</option>
+            <option>Angel investor</option>
+            <option>Family office</option>
+            <option>Operator</option>
+            <option>Business owner</option>
+            <option>Strategic investor</option>
+            <option>Advisor / mentor</option>
+            <option>VC / investment firm</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Typical ticket size</span>
-            <select name="ticketSize" required>
-              <option value="">Select</option>
-              <option>Under AED 50k</option>
-              <option>AED 50k–100k</option>
-              <option>AED 100k–250k</option>
-              <option>AED 250k–500k</option>
-              <option>AED 500k–1M</option>
-              <option>AED 1M+</option>
-              <option>Not investing, only advising</option>
-            </select>
-          </label>
+          <SmartSelect name="ticketSize" label="Typical ticket size">
+            <option value="">Select</option>
+            <option>Under AED 50k</option>
+            <option>AED 50k–100k</option>
+            <option>AED 100k–250k</option>
+            <option>AED 250k–500k</option>
+            <option>AED 500k–1M</option>
+            <option>AED 1M+</option>
+            <option>Not investing, only advising</option>
+            <option>Other</option>
+          </SmartSelect>
 
-          <label>
-            <span>Location</span>
-            <select name="location" required>
-              <option value="">Select</option>
-              <option>Dubai</option>
-              <option>Abu Dhabi</option>
-              <option>Sharjah</option>
-              <option>Other UAE emirate</option>
-              <option>GCC</option>
-              <option>Outside UAE</option>
-            </select>
-          </label>
+          <SmartSelect name="location" label="Location">
+            <option value="">Select</option>
+            <option>Dubai</option>
+            <option>Abu Dhabi</option>
+            <option>Sharjah</option>
+            <option>Ajman</option>
+            <option>Ras Al Khaimah</option>
+            <option>Fujairah</option>
+            <option>Umm Al Quwain</option>
+            <option>GCC</option>
+            <option>Outside UAE</option>
+            <option>Other</option>
+          </SmartSelect>
 
           <label>
             <span>LinkedIn / profile link</span>
