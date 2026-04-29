@@ -1,12 +1,12 @@
 :root {
-  --cream: #efe3ca;
-  --cream-dark: #e3d3b7;
-  --navy: #082c50;
-  --navy-soft: #173f68;
-  --gold: #a9823b;
+  --cream: #f4efe3;
+  --cream-dark: #e6dcc7;
+  --navy: #1f3a2f;
+  --navy-soft: #2f5947;
+  --gold: #a88345;
   --white: #ffffff;
-  --line: rgba(8, 44, 80, 0.18);
-  --shadow: 0 24px 70px rgba(8, 44, 80, 0.12);
+  --line: rgba(31, 58, 47, 0.18);
+  --shadow: 0 24px 70px rgba(31, 58, 47, 0.12);
   font-family: Georgia, "Times New Roman", serif;
   color: var(--navy);
   background: var(--cream);
