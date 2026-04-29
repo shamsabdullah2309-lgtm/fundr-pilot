@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react";
 
 const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxS5WjBlyyqzdJRq7KS5Q9sbW3U2ueg3OP7RLHKeNBrSgfvtNhDChSiofwTjwCMx-A/exec";
+  "https://script.google.com/macros/s/AKfycbyUVoffrDJ0xIRWiqgJQdAlYS1aycGOilxgWbw3hAkTUcXPLQ81O0mZWBpgYdLzloA6Dg/exec";
 
 const legalDisclaimer =
   "Fundr is not a financial adviser, broker, investment manager, crowdfunding platform, or securities exchange. We do not handle investor funds, recommend investments, sell securities, or guarantee outcomes. We facilitate visibility, structured profiles, feedback, and introductions only.";
@@ -107,19 +107,27 @@ function App() {
           <article>
             <span>01</span>
             <h3>Startup demand</h3>
-            <p>Do UAE founders want to present themselves through a clearer, standardised startup profile?</p>
+            <p>
+              Do UAE founders want to present themselves through a clearer, standardised startup
+              profile?
+            </p>
           </article>
 
           <article>
             <span>02</span>
             <h3>Investor demand</h3>
-            <p>Do investors, operators, and advisors want better-organised UAE startup opportunities?</p>
+            <p>
+              Do investors, operators, and advisors want better-organised UAE startup opportunities?
+            </p>
           </article>
 
           <article>
             <span>03</span>
             <h3>Structured information</h3>
-            <p>Is it useful to capture capital need, transaction structure, proposed terms, and use of funds before introductions happen?</p>
+            <p>
+              Is it useful to capture capital need, transaction structure, proposed terms, and use
+              of funds before introductions happen?
+            </p>
           </article>
         </div>
       </section>
