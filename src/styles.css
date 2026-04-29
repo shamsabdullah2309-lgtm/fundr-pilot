@@ -1,0 +1,403 @@
+:root {
+  --cream: #efe3ca;
+  --cream-dark: #e3d3b7;
+  --navy: #082c50;
+  --navy-soft: #173f68;
+  --gold: #a9823b;
+  --white: #ffffff;
+  --line: rgba(8, 44, 80, 0.18);
+  --shadow: 0 24px 70px rgba(8, 44, 80, 0.12);
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--navy);
+  background: var(--cream);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--navy);
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 88% 20%, rgba(169, 130, 59, 0.11), transparent 22rem),
+    linear-gradient(180deg, var(--cream), #f5ead5);
+}
+
+.topbar {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.logo-mark {
+  width: 1.55rem;
+  height: 1.55rem;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 0.8rem;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.topbar nav {
+  display: flex;
+  gap: 1.25rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.topbar nav a {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.topbar nav a:hover {
+  border-bottom-color: var(--navy);
+}
+
+.manifesto-page {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 3rem 1.4rem 7rem;
+}
+
+.small-label {
+  margin: 0 0 1.8rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 980px;
+  margin-bottom: 2.2rem;
+  font-size: clamp(2.55rem, 5vw, 4.8rem);
+  line-height: 1.02;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+}
+
+h2 {
+  max-width: 900px;
+  margin-bottom: 1.4rem;
+  font-size: clamp(2.1rem, 4vw, 4rem);
+  line-height: 1.05;
+  font-weight: 500;
+  letter-spacing: -0.055em;
+}
+
+h3 {
+  margin-bottom: 0.75rem;
+  font-size: 1.45rem;
+  line-height: 1.1;
+}
+
+.manifesto-copy {
+  max-width: 930px;
+}
+
+.manifesto-copy p,
+.text-panel p,
+.form-card > p,
+.legal-section p {
+  font-size: 1.22rem;
+  line-height: 1.65;
+}
+
+.bold-line {
+  font-weight: 800;
+}
+
+.signature-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-top: 2.4rem;
+}
+
+.signature-row div {
+  display: grid;
+  gap: 0.25rem;
+  font-size: 0.92rem;
+}
+
+.signature-row span,
+.signature-row a {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.78rem;
+}
+
+.outline-button,
+.submit-button {
+  border: 1.5px solid var(--navy);
+  border-radius: 0.45rem;
+  background: transparent;
+  color: var(--navy);
+  padding: 0.95rem 1.35rem;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 800;
+  transition: 0.2s ease;
+}
+
+.outline-button:hover,
+.submit-button:hover {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 5.5rem 1.4rem;
+  border-top: 1px solid var(--line);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.cards-grid article,
+.text-panel,
+.form-card,
+.legal-section {
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: var(--shadow);
+}
+
+.cards-grid article {
+  padding: 1.35rem;
+}
+
+.cards-grid article span {
+  display: inline-flex;
+  margin-bottom: 2.5rem;
+  color: var(--gold);
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 900;
+}
+
+.cards-grid p {
+  line-height: 1.55;
+  font-size: 1.05rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.text-panel {
+  padding: 1.5rem;
+}
+
+.forms-section h2 {
+  margin-bottom: 1.8rem;
+}
+
+.form-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.form-toggle button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.form-toggle button.active {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.form-card {
+  padding: 1.5rem;
+}
+
+.pilot-form {
+  margin-top: 1.2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.45rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--navy);
+  padding: 0.9rem 1rem;
+  outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 4px rgba(8, 44, 80, 0.09);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.submit-button {
+  margin-top: 1.1rem;
+}
+
+.form-status {
+  margin-top: 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.8rem;
+  padding: 1rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-weight: 800;
+}
+
+.legal-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.4rem;
+}
+
+.legal-section p {
+  margin: 0;
+  font-size: 0.95rem;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 2rem 1.4rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  font-weight: 800;
+}
+
+@media (max-width: 850px) {
+  .topbar,
+  .signature-row,
+  .footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .topbar nav {
+    flex-wrap: wrap;
+  }
+
+  .cards-grid,
+  .split,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-page,
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .manifesto-copy p,
+  .text-panel p,
+  .form-card > p {
+    font-size: 1.08rem;
+  }
+
+  .outline-button,
+  .submit-button {
+    width: 100%;
+    text-align: center;
+  }
+}

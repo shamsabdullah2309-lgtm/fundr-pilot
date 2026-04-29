@@ -1,0 +1,482 @@
+import React, { useMemo, useState } from "react";
+
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbxS5WjBlyyqzdJRq7KS5Q9sbW3U2ueg3OP7RLHKeNBrSgfvtNhDChSiofwTjwCMx-A/exec";
+
+const legalDisclaimer =
+  "Fundr is not a financial adviser, broker, investment manager, crowdfunding platform, or securities exchange. We do not handle investor funds, recommend investments, sell securities, or guarantee outcomes. We facilitate visibility, structured profiles, feedback, and introductions only.";
+
+function App() {
+  const year = useMemo(() => new Date().getFullYear(), []);
+  const [activeForm, setActiveForm] = useState("startup");
+
+  return (
+    <main className="page">
+      <header className="topbar">
+        <a className="logo" href="#top" aria-label="Fundr home">
+          <span className="logo-mark">F</span>
+          <span>Fundr</span>
+        </a>
+
+        <nav>
+          <a href="#manifesto">Manifesto</a>
+          <a href="#pilot">Pilot</a>
+          <a href="#join">Join</a>
+        </nav>
+      </header>
+
+      <section id="top" className="manifesto-page">
+        <p className="small-label">Fundr Pilot</p>
+
+        <h1>In a world full of pitch decks and cold messages, we choose clarity.</h1>
+
+        <div className="manifesto-copy" id="manifesto">
+          <p>Because the first conversation between a founder and an investor should not be messy.</p>
+
+          <p>
+            Today, many founders still rely on WhatsApp forwards, LinkedIn messages, family
+            contacts, and random pitch decks to get noticed. Some have strong businesses, but they
+            struggle to explain them clearly. Others know what they need, but not how to present it.
+          </p>
+
+          <p>
+            At the same time, investors receive opportunities in different formats, with missing
+            information and unclear terms. One founder sends a deck. Another sends a voice note.
+            Another says they are “raising money” but does not explain if it is debt, equity,
+            partnership, or advisory support.
+          </p>
+
+          <p>We believe the first step should be better.</p>
+
+          <p>That’s why we are testing Fundr.</p>
+
+          <p>
+            Fundr is a UAE-focused startup discovery and warm-introduction network. It helps
+            founders present their businesses in a clear, standard format and helps investors
+            discover better-organised opportunities.
+          </p>
+
+          <p>Not just “startups.” But structured startup profiles.</p>
+
+          <p>
+            Each profile can capture what matters: the company, the founder, the traction, the
+            capital need, the transaction structure, the proposed terms, the use of funds, and the
+            supporting documents.
+          </p>
+
+          <p>
+            Fundr is not crowdfunding. It does not handle investor money. It does not sell shares.
+            It does not give investment advice. It does not guarantee funding.
+          </p>
+
+          <p>
+            We are here to make discovery cleaner. To reduce back-and-forth. To help founders look
+            more professional before the first introduction happens. To help investors understand
+            opportunities faster.
+          </p>
+
+          <p>
+            This is a pilot. We are testing whether UAE founders, investors, operators, and advisors
+            want a more organised way to connect.
+          </p>
+
+          <p>
+            If the traditional way is built on who you know, Fundr is testing a better first step:
+            what you can clearly show.
+          </p>
+
+          <p className="bold-line">Be clear. Be ready. Be Fundr.</p>
+        </div>
+
+        <div className="signature-row">
+          <div>
+            <strong>Mohammed Shams Abdullah</strong>
+            <span>Founder</span>
+            <a href="mailto:hello@fundr.com">hello@fundr.com</a>
+          </div>
+
+          <a className="outline-button" href="#join">Join the pilot</a>
+        </div>
+      </section>
+
+      <section id="pilot" className="section">
+        <p className="small-label">What the pilot tests</p>
+        <h2>We are testing demand before building the full platform.</h2>
+
+        <div className="cards-grid">
+          <article>
+            <span>01</span>
+            <h3>Startup demand</h3>
+            <p>Do UAE founders want to present themselves through a clearer, standardised startup profile?</p>
+          </article>
+
+          <article>
+            <span>02</span>
+            <h3>Investor demand</h3>
+            <p>Do investors, operators, and advisors want better-organised UAE startup opportunities?</p>
+          </article>
+
+          <article>
+            <span>03</span>
+            <h3>Structured information</h3>
+            <p>Is it useful to capture capital need, transaction structure, proposed terms, and use of funds before introductions happen?</p>
+          </article>
+        </div>
+      </section>
+
+      <section className="section split">
+        <div>
+          <p className="small-label">Why it matters</p>
+          <h2>Better than random decks, forwards, and unclear asks.</h2>
+        </div>
+
+        <div className="text-panel">
+          <p>
+            Fundr is not trying to replace due diligence, legal review, or investor judgment. It is
+            trying to improve the first step: how an opportunity is presented before an introduction.
+          </p>
+
+          <p>
+            A standard Fundr profile can include company overview, founder details, industry, stage,
+            traction, revenue range, capital need, transaction structure, proposed terms, use of
+            funds, and supporting documents.
+          </p>
+
+          <p>The goal is simple: make the first conversation clearer for both founders and investors.</p>
+        </div>
+      </section>
+
+      <section id="join" className="section forms-section">
+        <p className="small-label">Join the pilot</p>
+        <h2>Choose your side of the market.</h2>
+
+        <div className="form-toggle">
+          <button
+            type="button"
+            className={activeForm === "startup" ? "active" : ""}
+            onClick={() => setActiveForm("startup")}
+          >
+            I am a Startup / Founder
+          </button>
+
+          <button
+            type="button"
+            className={activeForm === "investor" ? "active" : ""}
+            onClick={() => setActiveForm("investor")}
+          >
+            I am an Investor / Operator
+          </button>
+        </div>
+
+        <div className="form-card">
+          {activeForm === "startup" ? <StartupPilotForm /> : <InvestorPilotForm />}
+        </div>
+      </section>
+
+      <section className="legal-section">
+        <p>{legalDisclaimer}</p>
+      </section>
+
+      <footer className="footer">
+        <span>© {year} Fundr. Pilot website.</span>
+        <a href="mailto:hello@fundr.com">hello@fundr.com</a>
+      </footer>
+    </main>
+  );
+}
+
+function StartupPilotForm() {
+  const [status, setStatus] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setStatus("Submitting...");
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("type", "pilot_startup");
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(formData)
+      });
+
+      event.currentTarget.reset();
+      setStatus("Received. Thank you — we will review your pilot response.");
+    } catch {
+      setStatus("Something went wrong. Please try again or email hello@fundr.com.");
+    }
+  }
+
+  return (
+    <>
+      <h3>Startup pilot application</h3>
+      <p>
+        Apply to test whether a structured Fundr profile could help your business become clearer
+        and more investor-ready.
+      </p>
+
+      <form className="pilot-form" onSubmit={handleSubmit}>
+        <div className="form-grid">
+          <label>
+            <span>Founder name</span>
+            <input name="founderName" required />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" required />
+          </label>
+
+          <label>
+            <span>Company name</span>
+            <input name="companyName" required />
+          </label>
+
+          <label>
+            <span>Location</span>
+            <select name="location" required>
+              <option value="">Select</option>
+              <option>Dubai</option>
+              <option>Abu Dhabi</option>
+              <option>Sharjah</option>
+              <option>Other UAE emirate</option>
+              <option>GCC</option>
+              <option>Outside UAE</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Industry</span>
+            <select name="industry" required>
+              <option value="">Select</option>
+              <option>Technology</option>
+              <option>AI</option>
+              <option>Fintech</option>
+              <option>Automotive</option>
+              <option>F&amp;B</option>
+              <option>Health &amp; wellness</option>
+              <option>Education</option>
+              <option>Real estate</option>
+              <option>Marketplace</option>
+              <option>Consumer brands</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Stage</span>
+            <select name="stage" required>
+              <option value="">Select</option>
+              <option>Idea</option>
+              <option>MVP</option>
+              <option>Pre-seed</option>
+              <option>Seed</option>
+              <option>Early revenue</option>
+              <option>Growth</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Monthly revenue range</span>
+            <select name="monthlyRevenue" required>
+              <option value="">Select</option>
+              <option>No revenue yet</option>
+              <option>AED 1k–10k</option>
+              <option>AED 10k–50k</option>
+              <option>AED 50k–100k</option>
+              <option>AED 100k–500k</option>
+              <option>AED 500k+</option>
+              <option>Prefer not to say</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Capital need</span>
+            <select name="capitalNeed" required>
+              <option value="">Select</option>
+              <option>Under AED 100k</option>
+              <option>AED 100k–250k</option>
+              <option>AED 250k–500k</option>
+              <option>AED 500k–1M</option>
+              <option>AED 1M–3M</option>
+              <option>AED 3M+</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Transaction structure</span>
+            <select name="transactionStructure" required>
+              <option value="">Select</option>
+              <option>Equity</option>
+              <option>Debt</option>
+              <option>Convertible note</option>
+              <option>SAFE-style agreement</option>
+              <option>Revenue share</option>
+              <option>Strategic partnership</option>
+              <option>Advisory support</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Pitch deck / website link</span>
+            <input name="pitchDeck" type="url" />
+          </label>
+
+          <label className="full-width">
+            <span>What are you looking for?</span>
+            <textarea
+              name="goal"
+              rows="4"
+              required
+              placeholder="Investors, advisors, operators, strategic partners, growth capital, feedback, etc."
+            />
+          </label>
+
+          <label className="full-width">
+            <span>Short company description</span>
+            <textarea
+              name="description"
+              rows="5"
+              required
+              placeholder="Briefly explain the business, traction, and why Fundr could help."
+            />
+          </label>
+        </div>
+
+        <button className="submit-button" type="submit">
+          Submit startup pilot response
+        </button>
+
+        {status && <p className="form-status">{status}</p>}
+      </form>
+    </>
+  );
+}
+
+function InvestorPilotForm() {
+  const [status, setStatus] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setStatus("Submitting...");
+
+    const formData = new FormData(event.currentTarget);
+    formData.append("type", "pilot_investor");
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(formData)
+      });
+
+      event.currentTarget.reset();
+      setStatus("Received. Thank you — we will review your pilot response.");
+    } catch {
+      setStatus("Something went wrong. Please try again or email hello@fundr.com.");
+    }
+  }
+
+  return (
+    <>
+      <h3>Investor / operator pilot profile</h3>
+      <p>
+        Join the pilot to tell us what information you would need before reviewing or requesting
+        introductions to UAE startups.
+      </p>
+
+      <form className="pilot-form" onSubmit={handleSubmit}>
+        <div className="form-grid">
+          <label>
+            <span>Full name</span>
+            <input name="fullName" required />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" required />
+          </label>
+
+          <label>
+            <span>Investor / operator type</span>
+            <select name="investorType" required>
+              <option value="">Select</option>
+              <option>Angel investor</option>
+              <option>Family office</option>
+              <option>Operator</option>
+              <option>Business owner</option>
+              <option>Strategic investor</option>
+              <option>Advisor / mentor</option>
+              <option>VC / investment firm</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Typical ticket size</span>
+            <select name="ticketSize" required>
+              <option value="">Select</option>
+              <option>Under AED 50k</option>
+              <option>AED 50k–100k</option>
+              <option>AED 100k–250k</option>
+              <option>AED 250k–500k</option>
+              <option>AED 500k–1M</option>
+              <option>AED 1M+</option>
+              <option>Not investing, only advising</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Location</span>
+            <select name="location" required>
+              <option value="">Select</option>
+              <option>Dubai</option>
+              <option>Abu Dhabi</option>
+              <option>Sharjah</option>
+              <option>Other UAE emirate</option>
+              <option>GCC</option>
+              <option>Outside UAE</option>
+            </select>
+          </label>
+
+          <label>
+            <span>LinkedIn / profile link</span>
+            <input name="profile" type="url" />
+          </label>
+
+          <label className="full-width">
+            <span>Preferred sectors</span>
+            <textarea
+              name="preferredSectors"
+              rows="3"
+              required
+              placeholder="Technology, AI, fintech, automotive, F&B, education, real estate, etc."
+            />
+          </label>
+
+          <label className="full-width">
+            <span>What information would you need before requesting an intro?</span>
+            <textarea
+              name="investorNeeds"
+              rows="5"
+              required
+              placeholder="For example: traction, revenue, pitch deck, deal structure, terms, founder background, financials, use of funds."
+            />
+          </label>
+        </div>
+
+        <button className="submit-button" type="submit">
+          Submit investor / operator response
+        </button>
+
+        {status && <p className="form-status">{status}</p>}
+      </form>
+    </>
+  );
+}
+
+export default App;
