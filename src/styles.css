@@ -177,7 +177,7 @@ h3 {
   color: var(--navy);
   font-weight: 900;
   letter-spacing: 0;
-  -webkit-text-stroke: 0.2px var(--gold);
+  -webkit-text-stroke: 0.7px var(--gold);
   text-shadow: none;
 }
 
@@ -441,9 +441,5 @@ textarea {
   .slogan-line {
     font-size: clamp(2rem, 10vw, 3.2rem);
     line-height: 1.15;
-  }
-
-  .word-fundr {
-    -webkit-text-stroke: 0.15px var(--gold);
   }
 }
