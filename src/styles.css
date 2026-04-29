@@ -174,15 +174,36 @@ h3 {
 }
 
 .word-fundr {
-  color: var(--gold);
   font-weight: 900;
   letter-spacing: 0;
-  -webkit-text-stroke: 1.2px var(--navy);
-  text-shadow:
-    0.6px 0 var(--navy),
-   -0.6px 0 var(--navy),
-    0 0.6px var(--navy),
-    0 -0.6px var(--navy);
+  background: linear-gradient(
+    90deg,
+    var(--navy) 0%,
+    var(--gold) 45%,
+    var(--gold-rich) 55%,
+    var(--navy) 100%
+  );
+  background-size: 220% auto;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+  animation: fundrFade 4s ease-in-out infinite;
+}
+
+@keyframes fundrFade {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .signature-row {
