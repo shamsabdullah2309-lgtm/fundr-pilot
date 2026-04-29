@@ -156,8 +156,11 @@ h3 {
 }
 
 .slogan-line {
-  font-size: 1.35rem;
-  line-height: 1.55;
+  margin: 0;
+  font-size: clamp(2.2rem, 4vw, 4.2rem);
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  font-weight: 900;
 }
 
 .word-founder {
@@ -172,16 +175,11 @@ h3 {
 
 .word-fundr {
   color: var(--navy);
-  font-weight: 950;
-  letter-spacing: -0.01em;
-  text-shadow:
-    -1px -1px 0 var(--gold),
-     1px -1px 0 var(--gold),
-    -1px  1px 0 var(--gold),
-     1px  1px 0 var(--gold),
-     0px  2px 0 var(--gold);
+  font-weight: 900;
+  -webkit-text-stroke: 0.55px var(--gold);
+  text-stroke: 0.55px var(--gold);
+  text-shadow: none;
 }
-
 .signature-row {
   display: flex;
   justify-content: space-between;
