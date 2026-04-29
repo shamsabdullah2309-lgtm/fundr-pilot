@@ -25,7 +25,7 @@ function SmartSelect({ name, label, children, required = true }) {
           className="other-input"
           value={otherValue}
           onChange={(event) => setOtherValue(event.target.value)}
-          placeholder={`Type other ${label.toLowerCase()}`}
+          placeholder="Type here..."
           required
         />
       )}
@@ -40,7 +40,7 @@ function App() {
   const [activeForm, setActiveForm] = useState("startup");
 
   return (
-   <main id="main-content" className="page" role="main">
+    <main id="main-content" className="page" role="main">
       <header className="topbar">
         <a className="logo" href="#top" aria-label="Fundr home">
           <span className="logo-mark">F</span>
@@ -544,9 +544,7 @@ function FeedbackForm() {
   return (
     <>
       <h3>Pilot feedback</h3>
-      <p>
-        Give quick feedback on the Fundr pilot idea, website, clarity, trust, and usefulness.
-      </p>
+      <p>Give quick feedback on the Fundr pilot idea, website, clarity, trust, and usefulness.</p>
 
       <form className="pilot-form" onSubmit={handleSubmit}>
         <div className="form-grid">
