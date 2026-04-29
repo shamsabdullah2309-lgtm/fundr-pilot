@@ -40,7 +40,7 @@ function App() {
   const [activeForm, setActiveForm] = useState("startup");
 
   return (
-    <main className="page">
+   <main id="main-content" className="page" role="main">
       <header className="topbar">
         <a className="logo" href="#top" aria-label="Fundr home">
           <span className="logo-mark">F</span>
