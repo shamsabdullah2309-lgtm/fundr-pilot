@@ -1,12 +1,12 @@
 :root {
-  --cream: #f4efe3;
-  --cream-dark: #e6dcc7;
+  --cream: #d8c7a8;
+  --cream-dark: #c7b28f;
   --navy: #1f3a2f;
   --navy-soft: #2f5947;
-  --gold: #a88345;
+  --gold: #8f6b32;
   --white: #ffffff;
-  --line: rgba(31, 58, 47, 0.18);
-  --shadow: 0 24px 70px rgba(31, 58, 47, 0.12);
+  --line: rgba(31, 58, 47, 0.22);
+  --shadow: 0 24px 70px rgba(31, 58, 47, 0.16);
   font-family: Georgia, "Times New Roman", serif;
   color: var(--navy);
   background: var(--cream);
@@ -40,9 +40,9 @@ select {
 .page {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 88% 20%, rgba(168, 131, 69, 0.13), transparent 22rem),
-    radial-gradient(circle at 8% 10%, rgba(31, 58, 47, 0.08), transparent 20rem),
-    linear-gradient(180deg, var(--cream), #efe5d2);
+    radial-gradient(circle at 88% 20%, rgba(143, 107, 50, 0.14), transparent 22rem),
+    radial-gradient(circle at 8% 10%, rgba(31, 58, 47, 0.09), transparent 20rem),
+    linear-gradient(180deg, var(--cream), #cdbb99);
 }
 
 .topbar {
@@ -305,21 +305,30 @@ select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.32);
   color: var(--navy);
   padding: 0.9rem 1rem;
   outline: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(31, 58, 47, 0.6);
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   border-color: var(--navy);
-  box-shadow: 0 0 0 4px rgba(8, 44, 80, 0.09);
+  box-shadow: 0 0 0 4px rgba(31, 58, 47, 0.11);
 }
 
 textarea {
   resize: vertical;
+}
+
+.other-input {
+  margin-top: 0.55rem;
 }
 
 .submit-button {
@@ -401,7 +410,4 @@ textarea {
     width: 100%;
     text-align: center;
   }
-  .other-input {
-  margin-top: 0.55rem;
-}
 }
