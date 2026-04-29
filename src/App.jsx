@@ -114,7 +114,11 @@ function App() {
             what you can clearly show.
           </p>
 
-          <p className="bold-line">Be clear. Be ready. Be Fundr.</p>
+          <p className="bold-line slogan-line">
+  Built for <span className="word-founder">founders</span>. Backed by{" "}
+  <span className="word-funder">funders</span>. Connected by{" "}
+  <span className="word-fundr">Fundr</span>.
+</p>
         </div>
 
         <div className="signature-row">
