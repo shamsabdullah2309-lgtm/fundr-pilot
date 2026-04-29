@@ -440,11 +440,13 @@ textarea {
   }
 
 .word-fundr {
+  color: var(--navy);
+  font-weight: 900;
+  letter-spacing: 0;
   text-shadow:
-    -0.8px -0.8px 0 var(--gold),
-     0.8px -0.8px 0 var(--gold),
-    -0.8px  0.8px 0 var(--gold),
-     0.8px  0.8px 0 var(--gold),
-     0px    1.5px 0 var(--gold);
+    -0.6px 0 var(--gold),
+     0.6px 0 var(--gold),
+     0 -0.6px var(--gold),
+     0 0.6px var(--gold);
 }
 }
