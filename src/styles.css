@@ -176,10 +176,11 @@ h3 {
 .word-fundr {
   color: var(--navy);
   font-weight: 900;
-  -webkit-text-stroke: 0.55px var(--gold);
-  text-stroke: 0.55px var(--gold);
+  letter-spacing: 0;
+  -webkit-text-stroke: 0.2px var(--gold);
   text-shadow: none;
 }
+
 .signature-row {
   display: flex;
   justify-content: space-between;
@@ -437,14 +438,12 @@ textarea {
     text-align: center;
   }
 
-.word-fundr {
-  color: var(--navy);
-  font-weight: 900;
-  letter-spacing: 0;
-  text-shadow:
-    -0.6px 0 var(--gold),
-     0.6px 0 var(--gold),
-     0 -0.6px var(--gold),
-     0 0.6px var(--gold);
-}
+  .slogan-line {
+    font-size: clamp(2rem, 10vw, 3.2rem);
+    line-height: 1.15;
+  }
+
+  .word-fundr {
+    -webkit-text-stroke: 0.15px var(--gold);
+  }
 }
