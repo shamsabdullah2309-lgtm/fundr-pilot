@@ -177,8 +177,12 @@ h3 {
   color: var(--gold);
   font-weight: 900;
   letter-spacing: 0;
-  -webkit-text-stroke: 0.7px var(--navy);
-  text-shadow: none;
+  -webkit-text-stroke: 1.2px var(--navy);
+  text-shadow:
+    0.6px 0 var(--navy),
+   -0.6px 0 var(--navy),
+    0 0.6px var(--navy),
+    0 -0.6px var(--navy);
 }
 
 .signature-row {
