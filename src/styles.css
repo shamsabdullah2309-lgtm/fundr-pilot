@@ -400,4 +400,7 @@ textarea {
     width: 100%;
     text-align: center;
   }
+  .other-input {
+  margin-top: 0.55rem;
+}
 }
