@@ -205,10 +205,20 @@ function App() {
           >
             I am an Investor / Operator
           </button>
+
+          <button
+            type="button"
+            className={activeForm === "feedback" ? "active" : ""}
+            onClick={() => setActiveForm("feedback")}
+          >
+            Give Feedback
+          </button>
         </div>
 
         <div className="form-card">
-          {activeForm === "startup" ? <StartupPilotForm /> : <InvestorPilotForm />}
+          {activeForm === "startup" && <StartupPilotForm />}
+          {activeForm === "investor" && <InvestorPilotForm />}
+          {activeForm === "feedback" && <FeedbackForm />}
         </div>
       </section>
 
@@ -498,6 +508,108 @@ function InvestorPilotForm() {
 
         <button className="submit-button" type="submit">
           Submit investor / operator response
+        </button>
+
+        {status && <p className="form-status">{status}</p>}
+      </form>
+    </>
+  );
+}
+
+function FeedbackForm() {
+  const [status, setStatus] = useState("");
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    setStatus("Submitting...");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.append("type", "pilot_feedback");
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams(formData)
+      });
+
+      form.reset();
+      setStatus("Received. Thank you — your feedback has been recorded.");
+    } catch {
+      setStatus("Something went wrong. Please try again or email hello@fundr.com.");
+    }
+  }
+
+  return (
+    <>
+      <h3>Pilot feedback</h3>
+      <p>
+        Give quick feedback on the Fundr pilot idea, website, clarity, trust, and usefulness.
+      </p>
+
+      <form className="pilot-form" onSubmit={handleSubmit}>
+        <div className="form-grid">
+          <label>
+            <span>Name</span>
+            <input name="name" required />
+          </label>
+
+          <label>
+            <span>Email</span>
+            <input name="email" type="email" required />
+          </label>
+
+          <SmartSelect name="role" label="Role">
+            <option value="">Select</option>
+            <option>Founder</option>
+            <option>Investor</option>
+            <option>Operator</option>
+            <option>Advisor / mentor</option>
+            <option>Student</option>
+            <option>Business owner</option>
+            <option>Other</option>
+          </SmartSelect>
+
+          <SmartSelect name="understandsFundr" label="Do you understand what Fundr does?">
+            <option value="">Select</option>
+            <option>Yes, clearly</option>
+            <option>Somewhat</option>
+            <option>Not really</option>
+            <option>Other</option>
+          </SmartSelect>
+
+          <SmartSelect name="usefulness" label="How useful does this idea seem?">
+            <option value="">Select</option>
+            <option>Very useful</option>
+            <option>Somewhat useful</option>
+            <option>Not useful</option>
+            <option>Not sure yet</option>
+            <option>Other</option>
+          </SmartSelect>
+
+          <SmartSelect name="trustLevel" label="Does the pilot feel trustworthy?">
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>Somewhat</option>
+            <option>No</option>
+            <option>Needs more credibility</option>
+            <option>Other</option>
+          </SmartSelect>
+
+          <label className="full-width">
+            <span>Feedback</span>
+            <textarea
+              name="feedback"
+              rows="6"
+              required
+              placeholder="What is clear, confusing, useful, weak, or missing? What would make Fundr better?"
+            />
+          </label>
+        </div>
+
+        <button className="submit-button" type="submit">
+          Submit feedback
         </button>
 
         {status && <p className="form-status">{status}</p>}
