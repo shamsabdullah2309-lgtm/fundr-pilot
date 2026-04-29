@@ -411,3 +411,23 @@ textarea {
     text-align: center;
   }
 }
+.slogan-line {
+  font-size: 1.35rem;
+  line-height: 1.55;
+}
+
+.word-founder {
+  color: #1f3a2f;
+  font-weight: 900;
+}
+
+.word-funder {
+  color: #8f6b32;
+  font-weight: 900;
+}
+
+.word-fundr {
+  color: #173f32;
+  font-weight: 950;
+  border-bottom: 2px solid #8f6b32;
+}
